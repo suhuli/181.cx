@@ -1,57 +1,95 @@
-<script>  
-function Ok_OnClick(event)  
-{  
-if(document.getElementsByName("textName")[0].value == ""){  
-alert("请输入内容");  
-return;  
-}//getElementById  
-var table;  
-var tableList = document.getElementsByTagName("TABLE");  
-for(var i = 0 ; i < tableList.length ; i++) {  
-if(tableList[i].name == "tableName") {  
-table = tableList[i]  
-break;  
-}  
-}  
-var value = document.getElementsByName("textName")[0].value;  
-var index = table.rows.length;  
-table.insertRow(index);  
-table.rows(index).insertCell(0);  
-table.rows(index).cells(0).innerText = value;  
-document.getElementsByName("textName")[0].value = "";  
-}  
-</script>   
-<HTML>  
-<HEAD>  
-<META http-equiv="Content-Type" content="text/html; charset=gb2312">  
-<TITLE>留言版</TITLE>  
-<STYLE>  
-td{width:20%;height:20px;border-bottom:1px solid black;border-right:1px solid black;cursor:default;}  
-div{font-size:13px;}  
-th{height:20px;font-size:12px;font-weight:normal;border-bottom:2px solid black;background-color:#CCCCCC}  
-table{border:1px solid black;font-size:13px;}  
-</STYLE>  
-</HEAD>  
-<BODY oncontextmenu="return false;"">   
-<TABLE name="tableName" width="70%" align="center" cellpadding="0" cellspacing="0">   
-<TR>   
-<TH colspan="4" style="">留言版</TH>   
-</TR>   
-<TR>   
-<TD>曾子曰：吾日三省乎吾身。为人谋而不忠乎？与朋友交而不信乎？传不习乎？ ^_^</TD>   
-</TR>   
-</TABLE>   
-<BR>  
-<div align="center">  
-<textarea rows="2" name="textName" id="textId" cols="20"  
-style="width: 70%; clip: rect(0pt, 47pt, 18pt, 0pt); font-family: 宋体; font-size: 10pt; font-weight: normal; font-style: normal;text-align: left; vertical-align: middle; text-indent: 0; color: #000000; background-attachment: fixed; background-color: #EEEEEE; border: 1px solid #0xf8f8f8">  
-</textarea>  
-</div>  
-<BR>  
-<div align="center">  
-<input type="button" value="提交" onclick="return Ok_OnClick(window.event);"  
-style="align:center ; width:60 ; height: 21; clip: rect(0pt, 47pt, 18pt, 0pt); font-family: 宋体; font-size: 10pt; font-weight: normal; font-style: normal; cursor: hand; text-align: center; vertical-align: middle; text-indent: 0; color: #000000; background-attachment: fixed; background-color: #d8d8d8; border: 1px solid #59b4f7">  
-<!--position: absolute; left: 342; top: 184; -->              
-</div>  
-</BODY>   
-</HTML>
+<!--STATUS OK-->
+<head>
+<link rel="shortcut icon" href="favicon.ico" >
+<HTML><HEAD><TITLE>Welcome</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="中国网络,中国网安,网络安全,信息安全,网站安全,漏洞提交,系统安全,黑客红客">
+<meta name="description" content="致力于互联网安全性监管，为网络保驾护航，促进互联网服务健康有序发展，让更多人了解安全，关注安全，注重安全,从而营造更好的安全生态。">
+<script type="text/javascript" src="110evip00.js"></script>
+<style>
+*{padding:0;margin:0;font-family:微软雅黑;}body{background-color:#FFF;}#top{height:80px;margin-top:50px;color:#999;font-size:12px;text-align:center;}#list{width:620px;margin:0 auto;height:50px;margin-top:20px;}#list ul{list-style:none;}#list li{float:left;margin-right:10px;position:relative;width:80px;overflow:hidden;}#list li.purple{margin-right:0px;}#list li a{display:block;width:80px;height:30px;font-size:16px;line-height:30px;text-decoration:none;text-align:center;font-weight:bold;}.red a{border-bottom:2px solid #FF0000;color:#FF0000;}.orange a{border-bottom:2px solid #FF7F00;color:#FF7F00;}.yellow a{border-bottom:2px solid #FFD306;color:#FFD306;}.green a{border-bottom:2px solid #00FF00;color:#00FF00;}.verdant a{border-bottom:2px solid #00FFFF;color:#00FFFF;}.blue a{border-bottom:2px solid #0000FF;color:#0000FF;}.purple a{border-bottom:2px solid #8B00FF;color:#8B00FF;}#logo{
+	background: url("data/logo.png") no-repeat no-repeat left center;
+	width: 116px;
+	height: 116px;
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+}#logo a{
+	width: 118px;
+	height: 118px;
+	display: block;
+}#bottom{margin-top:50px;text-align:center;font-size:12px;color:#999;}#copyright{line-height:30px;height:30px;margin-top:40px;}#seo{text-align:center;}#description{margin-top:20px;text-align:center;font-size:26px;color:#666;}.list ul li a span{position:absolute;top:0px;width:70px;line-height:20px;text-align: center;display:block;}.list ul li a span.out{top:0px;padding:5px;}.list ul li a span.over,.list ul li a span.bg{top:-45px;padding:5px;}#list ul li a span.over{color:#FFF;}#list ul li.red span.bg{height:30px;background-color:#FF0000;}#list ul li.orange span.bg{height:30px;background-color:#FF7F00;}#list ul li.yellow span.bg{height:30px;background-color:#FFD306;}#list ul li.green span.bg{height:30px;background-color:#00FF00;}#list ul li.verdant span.bg{height:30px;background-color:#00FFFF;}#list ul li.blue span.bg{height:30px;background-color:#0000FF;}#list ul li.purple span.bg{height:30px;background-color:#8B00FF;}#wrapper #bottom #seo {
+	font-family: "微软雅黑";
+}
+#wrapper #main #description p {
+	font-size: larger;
+}
+#wrapper #bottom #seo p strong {
+	font-size: 14px;
+}
+#wrapper #top h2 {
+	color: #333;
+	font-family: "微软雅黑";
+}
+</style>
+<script language="javascript">
+		$(document).ready(function() {
+			/// wrap inner content of each anchor with first layer and append background layer
+			$("#list li a").wrapInner( '<span class="out"></span>' ).append( '<span class="bg"></span>' );
+			// loop each anchor and add copy of text content
+			$("#list li a").each(function() {
+				$( '<span class="over">' +  $(this).text() + '</span>' ).appendTo( this );
+			});
+			$("#list li a").hover(function() {
+				// this function is fired when the mouse is moved over
+				$(".out",	this).stop().animate({'top':	'45px'},	500); // move down - hide
+				$(".over",	this).stop().animate({'top':	'0px'},		500); // move down - show
+				$(".bg",	this).stop().animate({'top':	'0px'},		240); // move down - show
+			}, function() {
+				// this function is fired when the mouse is moved off
+				$(".out",	this).stop().animate({'top':	'0px'},		500); // move up - show
+				$(".over",	this).stop().animate({'top':	'-45px'},	500); // move up - hide
+				$(".bg",	this).stop().animate({'top':	'-45px'},	240); // move up - hide
+			});
+		});
+	</script>
+</head>
+<body dir=ltr text=#008000 vLink=#00C000 aLink=#00FF00 link=#00C000 bgColor=#000000 background="data/110evip.gif">
+<script type="text/javascript" src="data/110evip01.js"></script>
+<noscript><body></noscript>
+<div id="wrapper">
+<div id="top">
+  <h2>政者，正也，子帅以正，孰敢不正？</h2>
+</div> <!--文字点-->
+<div id="main">
+<div id="logo">
+  <div align="center"><a href="http://110e.vip/" target="_blank"> </a></div>
+</div>
+<div id="list" class="list">
+<ul>
+<li class="red"><a href="/" target="_blank">进入主站</a></li>
+<li class="orange"><a href="http://110e.vip" target="_blank">搜索引擎</a></li>
+<li class="yellow"><a href="/" target="_blank">会员登陆</a></li>
+<li class="green"><a href="/" target="_blank">注册会员</a></li>
+<li class="verdant"><a href="/" target="_blank">郑重声明</a></li>
+<li class="blue"><a href="/" target="_blank">关于本站</a></li>
+<li class="purple"><a href="http://t.qq.com/a1339652706" target="_blank">官方微博</a></li>
+</ul>
+</div>
+</div>
+<div id="bottom">
+<div id="seo">
+<P align="center"><strong>由于某种原因本站及其相关服务全面进行升级，我们将在最短的时间内，以最好的姿态回归！</strong></p>
+<P align="center"><strong>一直以来，本站致力于互联网安全性监管，为网络保驾护航，促进互联网服务健康有序发展，让更</strong></p>
+<p align="center"><strong>多</strong><strong>人了解安全，关注安全，注重安全,从而营造更好的安全生态。</strong></p>
+<P align="center"><strong>不管从前，现在，还是未来，我们依然会坚持下去。</strong></p>
+<P align="center"><strong>与其听信谣言，不如相信我们。</strong></p>
+<P align="center"><strong>共勉</strong></p>
+</div>
+<audio src="https://110e.vip/hk/music.mp3" controls="" autoplay=""></audio>
+<div id="copyright">Welcome &copy; 2011-2016 admin@110e.vip</div>
+</div>
+</div>
+</body>
+</html>
