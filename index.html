@@ -1,108 +1,95 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset="gb2312">
-        <title>HTML5--JS API-æœ¬åœ°å­˜å‚¨ Webç•™è¨€æ¿</title>
-        <style type="text/css">
-        *{margin:0; padding:0;}
-        body,input{font-size:14px; line-height:24px; color:#333; font-family:Microsoft yahei, Song, Arial, Helvetica, Tahoma, Geneva;}
-        h1{margin-bottom:15px; height:100px; line-height:100px; text-align:center; font-size:24px; color:#fff; background:#0051a1;}
-        #content #post,#comment p{zoom:1;}
-        #content #post:after,#comment p:after{display:block; height:0; clear:both; visibility:hidden; overflow:hidden; content:'.';}
-        .transition{-webkit-transition:all 0.5s linear; -moz-transition:all 0.5s linear; 
-        -o-transition:all 0.5s linear; -ms-transition:all 0.5s linear; transition:all 0.5s linear;}
-        #content{margin:0 auto; width:960px; overflow:hidden;}
-        #content #post{margin-bottom:15px; padding-bottom:15px; border-bottom:1px #d4d4d4 dashed;}
-        #content #post textarea{display:block; margin-bottom:10px; padding:5px; width:948px; height:390px; 
-        border:1px #d1d1d1 solid; border-radius:5px; resize:none; outline:none;}
-        #content #post textarea:hover{border:1px #9bdf70 solid; background:#f0fbeb;}
-        #content #post #postBt,#content #post #clearBt{margin-left:5px; padding:3px; float:right;}
-        #comment{overflow:hidden;}
-        #comment p{margin-bottom:10px; padding:10px; border-radius:5px;}
-        #comment p:nth-child(odd){border:1px solid #e3e197; background:#ffd;}
-        #comment p:nth-child(even){border:1px solid #adcd3c; background:#f2fddb;}
-        #comment p span{display:inline; float:left;}
-        #comment p .msg{width:738px;}
-        #comment p .datetime{width:200px; color:#999; text-align:right;}
-        </style>
-        <script type="text/javascript">
-        var Storage =
-        {
-            saveData:function()//ä¿å­˜æ•°æ®
-            {
-                var data = document.querySelector("#post textarea");
-                if(data.value != "")
-                {
-                    var time = new Date().getTime() + Math.random() * 5;//getTimeæ˜¯Dateå¯¹è±¡ä¸­çš„æ–¹æ³•ï¼Œä½œç”¨æ˜¯è¿”å› 1970å¹´01æœˆ01æ—¥è‡³ä»Šçš„æ¯«ç§’æ•°
-                    localStorage.setItem(time, data.value + "|" + this.getDateTime());//å°†æ¯«ç§’æ•°å­˜å…¥Keyå€¼ä¸­ï¼Œå¯ä»¥é™ä½Keyå€¼é‡å¤ç‡
-                    data.value = "";
-                    this.writeData();
-                }
-                else
-                {
-                    alert("è¯·å¡«å†™æ‚¨çš„ç•™è¨€ï¼");
-                }
-            },
-            writeData:function()//è¾“å‡ºæ•°æ®
-            {
-                var dataHtml = "", data = "";
-                for(var i = localStorage.length-1; i >= 0; i--)//æ•ˆç‡æ›´é«˜çš„å¾ªç¯æ–¹æ³•
-                {
-                    data = localStorage.getItem(localStorage.key(i)).split("|");
-                    dataHtml += "<p><span class=\"msg\">" + data[0] + "</span><span class=\"datetime\">" + data[1] + "</span></p>";
-                }
-                document.getElementById("comment").innerHTML = dataHtml;
-            },
-            clearData:function()//æ¸…ç©ºæ•°æ®
-            {
-                if(localStorage.length > 0)
-                {
-                    if(window.confirm("æ¸…ç©ºåä¸å¯æ¢å¤ï¼Œæ˜¯å¦ç¡®è®¤æ¸…ç©ºï¼Ÿ"))
-                    {
-                        localStorage.clear();
-                        this.writeData();
-                    }
-                }
-                else
-                {
-                    alert("æ²¡æœ‰éœ€è¦æ¸…ç©ºçš„æ•°æ®ï¼");
-                }
-            },
-            getDateTime:function()//è·å–æ—¥æœŸæ—¶é—´ï¼Œä¾‹å¦‚ 2012-03-08 12:58:58
-            {
-                var isZero = function(num)//ç§æœ‰æ–¹æ³•ï¼Œè‡ªåŠ¨è¡¥é›¶
-                {
-                    if(num < 10)
-                    {
-                        num = "0" + num;
-                    }
-                    return num;
-                }
-                 
-                var d = new Date();
-    return d.getFullYear() + "-" + isZero(d.getMonth() + 1) + "-" + isZero(d.getDate()) + " 
-    " + isZero(d.getHours()) + ":" + isZero(d.getMinutes()) + ":" + isZero(d.getSeconds());
-            }            
-        }
-         
-        window.onload = function()
-        {
-            Storage.writeData();//å½“æ‰“å¼€é¡µé¢çš„æ—¶å€™ï¼Œå…ˆå°†localStorageä¸­çš„æ•°æ®è¾“å‡ºä¸€è¾¹ï¼Œå¦‚æœæ²¡æœ‰æ•°æ®ï¼Œåˆ™è¾“å‡ºç©º
-            document.getElementById("postBt").onclick = function(){Storage.saveData();}//å‘è¡¨è¯„è®ºæŒ‰é’®æ·»åŠ ç‚¹å‡»äº‹ä»¶ï¼Œä½œç”¨æ˜¯å°†localStorageä¸­çš„æ•°æ®è¾“å‡º
-            document.getElementById("clearBt").onclick = function(){Storage.clearData();}//æ¸…ç©ºæ‰€æœ‰å·²ä¿å­˜çš„æ•°æ®
-        }
-        </script>
-    </head>
-     
-    <body>
-        <h1>HTML5--JS API-æœ¬åœ°å­˜å‚¨ Webç•™è¨€æ¿æµ‹è¯•-QQ1339652706</h1>
-        <p id="content">
-            <p id="post">
-                <textarea class="transition"></textarea>
-                <input id="postBt" type="button" value="å‘è¡¨è¯„è®º"/>
-                <input id="clearBt" type="button" value="æ¸…ç©ºæ‰€æœ‰å·²ä¿å­˜çš„æ•°æ®"/>
-            </p>
-            <p id="comment"></p>
-        </p>
-    </body>
+<!--STATUS OK-->
+<head>
+<link rel="shortcut icon" href="favicon.ico" >
+<HTML><HEAD><TITLE>Welcome</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="ÖĞ¹úÍøÂç,ÖĞ¹úÍø°²,ÍøÂç°²È«,ĞÅÏ¢°²È«,ÍøÕ¾°²È«,Â©¶´Ìá½»,ÏµÍ³°²È«,ºÚ¿Íºì¿Í">
+<meta name="description" content="ÖÂÁ¦ÓÚ»¥ÁªÍø°²È«ĞÔ¼à¹Ü£¬ÎªÍøÂç±£¼İ»¤º½£¬´Ù½ø»¥ÁªÍø·şÎñ½¡¿µÓĞĞò·¢Õ¹£¬ÈÃ¸ü¶àÈËÁË½â°²È«£¬¹Ø×¢°²È«£¬×¢ÖØ°²È«,´Ó¶øÓªÔì¸üºÃµÄ°²È«ÉúÌ¬¡£">
+<script type="text/javascript" src="data/110evip00.js"></script>
+<style>
+*{padding:0;margin:0;font-family:Î¢ÈíÑÅºÚ;}body{background-color:#FFF;}#top{height:80px;margin-top:50px;color:#999;font-size:12px;text-align:center;}#list{width:620px;margin:0 auto;height:50px;margin-top:20px;}#list ul{list-style:none;}#list li{float:left;margin-right:10px;position:relative;width:80px;overflow:hidden;}#list li.purple{margin-right:0px;}#list li a{display:block;width:80px;height:30px;font-size:16px;line-height:30px;text-decoration:none;text-align:center;font-weight:bold;}.red a{border-bottom:2px solid #FF0000;color:#FF0000;}.orange a{border-bottom:2px solid #FF7F00;color:#FF7F00;}.yellow a{border-bottom:2px solid #FFD306;color:#FFD306;}.green a{border-bottom:2px solid #00FF00;color:#00FF00;}.verdant a{border-bottom:2px solid #00FFFF;color:#00FFFF;}.blue a{border-bottom:2px solid #0000FF;color:#0000FF;}.purple a{border-bottom:2px solid #8B00FF;color:#8B00FF;}#logo{
+	background: url("data/logo.png") no-repeat no-repeat left center;
+	width: 116px;
+	height: 116px;
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+}#logo a{
+	width: 118px;
+	height: 118px;
+	display: block;
+}#bottom{margin-top:50px;text-align:center;font-size:12px;color:#999;}#copyright{line-height:30px;height:30px;margin-top:40px;}#seo{text-align:center;}#description{margin-top:20px;text-align:center;font-size:26px;color:#666;}.list ul li a span{position:absolute;top:0px;width:70px;line-height:20px;text-align: center;display:block;}.list ul li a span.out{top:0px;padding:5px;}.list ul li a span.over,.list ul li a span.bg{top:-45px;padding:5px;}#list ul li a span.over{color:#FFF;}#list ul li.red span.bg{height:30px;background-color:#FF0000;}#list ul li.orange span.bg{height:30px;background-color:#FF7F00;}#list ul li.yellow span.bg{height:30px;background-color:#FFD306;}#list ul li.green span.bg{height:30px;background-color:#00FF00;}#list ul li.verdant span.bg{height:30px;background-color:#00FFFF;}#list ul li.blue span.bg{height:30px;background-color:#0000FF;}#list ul li.purple span.bg{height:30px;background-color:#8B00FF;}#wrapper #bottom #seo {
+	font-family: "Î¢ÈíÑÅºÚ";
+}
+#wrapper #main #description p {
+	font-size: larger;
+}
+#wrapper #bottom #seo p strong {
+	font-size: 14px;
+}
+#wrapper #top h2 {
+	color: #333;
+	font-family: "Î¢ÈíÑÅºÚ";
+}
+</style>
+<script language="javascript">
+		$(document).ready(function() {
+			/// wrap inner content of each anchor with first layer and append background layer
+			$("#list li a").wrapInner( '<span class="out"></span>' ).append( '<span class="bg"></span>' );
+			// loop each anchor and add copy of text content
+			$("#list li a").each(function() {
+				$( '<span class="over">' +  $(this).text() + '</span>' ).appendTo( this );
+			});
+			$("#list li a").hover(function() {
+				// this function is fired when the mouse is moved over
+				$(".out",	this).stop().animate({'top':	'45px'},	500); // move down - hide
+				$(".over",	this).stop().animate({'top':	'0px'},		500); // move down - show
+				$(".bg",	this).stop().animate({'top':	'0px'},		240); // move down - show
+			}, function() {
+				// this function is fired when the mouse is moved off
+				$(".out",	this).stop().animate({'top':	'0px'},		500); // move up - show
+				$(".over",	this).stop().animate({'top':	'-45px'},	500); // move up - hide
+				$(".bg",	this).stop().animate({'top':	'-45px'},	240); // move up - hide
+			});
+		});
+	</script>
+</head>
+<body dir=ltr text=#008000 vLink=#00C000 aLink=#00FF00 link=#00C000 bgColor=#000000 background="data/110evip.gif">
+<script type="text/javascript" src="data/110evip01.js"></script>
+<noscript><body></noscript>
+<div id="wrapper">
+<div id="top">
+  <h2>ÕşÕß£¬ÕıÒ²£¬×ÓË§ÒÔÕı£¬Êë¸Ò²»Õı£¿</h2>
+</div> <!--ÎÄ×Öµã-->
+<div id="main">
+<div id="logo">
+  <div align="center"><a href="http://110e.vip/" target="_blank"> </a></div>
+</div>
+<div id="list" class="list">
+<ul>
+<li class="red"><a href="/" target="_blank">½øÈëÖ÷Õ¾</a></li>
+<li class="orange"><a href="http://110e.vip" target="_blank">ËÑË÷ÒıÇæ</a></li>
+<li class="yellow"><a href="/" target="_blank">»áÔ±µÇÂ½</a></li>
+<li class="green"><a href="/" target="_blank">×¢²á»áÔ±</a></li>
+<li class="verdant"><a href="/" target="_blank">Ö£ÖØÉùÃ÷</a></li>
+<li class="blue"><a href="/" target="_blank">¹ØÓÚ±¾Õ¾</a></li>
+<li class="purple"><a href="http://t.qq.com/a1339652706" target="_blank">¹Ù·½Î¢²©</a></li>
+</ul>
+</div>
+</div>
+<div id="bottom">
+<div id="seo">
+<P align="center"><strong>ÓÉÓÚÄ³ÖÖÔ­Òò±¾Õ¾¼°ÆäÏà¹Ø·şÎñÈ«Ãæ½øĞĞÉı¼¶£¬ÎÒÃÇ½«ÔÚ×î¶ÌµÄÊ±¼äÄÚ£¬ÒÔ×îºÃµÄ×ËÌ¬»Ø¹é£¡</strong></p>
+<P align="center"><strong>Ò»Ö±ÒÔÀ´£¬±¾Õ¾ÖÂÁ¦ÓÚ»¥ÁªÍø°²È«ĞÔ¼à¹Ü£¬ÎªÍøÂç±£¼İ»¤º½£¬´Ù½ø»¥ÁªÍø·şÎñ½¡¿µÓĞĞò·¢Õ¹£¬ÈÃ¸ü</strong></p>
+<p align="center"><strong>¶à</strong><strong>ÈËÁË½â°²È«£¬¹Ø×¢°²È«£¬×¢ÖØ°²È«,´Ó¶øÓªÔì¸üºÃµÄ°²È«ÉúÌ¬¡£</strong></p>
+<P align="center"><strong>²»¹Ü´ÓÇ°£¬ÏÖÔÚ£¬»¹ÊÇÎ´À´£¬ÎÒÃÇÒÀÈ»»á¼á³ÖÏÂÈ¥¡£</strong></p>
+<P align="center"><strong>ÓëÆäÌıĞÅÒ¥ÑÔ£¬²»ÈçÏàĞÅÎÒÃÇ¡£</strong></p>
+<P align="center"><strong>¹²Ãã</strong></p>
+</div>
+<audio src="https://110e.vip/hk/music.mp3" controls="" autoplay=""></audio>
+<div id="copyright">Welcome &copy; 2011-2016 admin@110e.vip</div>
+</div>
+</div>
+</body>
 </html>
