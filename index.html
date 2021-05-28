@@ -33,27 +33,7 @@
 	font-family: "微软雅黑";
 }
 </style>
-<script language="javascript">
-		$(document).ready(function() {
-			/// wrap inner content of each anchor with first layer and append background layer
-			$("#list li a").wrapInner( '<span class="out"></span>' ).append( '<span class="bg"></span>' );
-			// loop each anchor and add copy of text content
-			$("#list li a").each(function() {
-				$( '<span class="over">' +  $(this).text() + '</span>' ).appendTo( this );
-			});
-			$("#list li a").hover(function() {
-				// this function is fired when the mouse is moved over
-				$(".out",	this).stop().animate({'top':	'45px'},	500); // move down - hide
-				$(".over",	this).stop().animate({'top':	'0px'},		500); // move down - show
-				$(".bg",	this).stop().animate({'top':	'0px'},		240); // move down - show
-			}, function() {
-				// this function is fired when the mouse is moved off
-				$(".out",	this).stop().animate({'top':	'0px'},		500); // move up - show
-				$(".over",	this).stop().animate({'top':	'-45px'},	500); // move up - hide
-				$(".bg",	this).stop().animate({'top':	'-45px'},	240); // move up - hide
-			});
-		});
-	</script>
+
 </head>
 <body dir=ltr text=#008000 vLink=#00C000 aLink=#00FF00 link=#00C000 bgColor=#000000 background="suhu.gif">
 
