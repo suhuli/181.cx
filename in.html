@@ -1,0 +1,93 @@
+<!--STATUS OK-->
+<head>
+<link rel="shortcut icon" href="favicon.ico" >
+<HTML><HEAD><TITLE>Welcome</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="速狐导航">
+<meta name="description" content="简单传递美好！">
+<script type="text/javascript" src="suhu00.js"></script>
+<style>
+*{padding:0;margin:0;font-family:微软雅黑;}body{background-color:#FFF;}#top{height:80px;margin-top:50px;color:#999;font-size:12px;text-align:center;}#list{width:620px;margin:0 auto;height:50px;margin-top:20px;}#list ul{list-style:none;}#list li{float:left;margin-right:10px;position:relative;width:80px;overflow:hidden;}#list li.purple{margin-right:0px;}#list li a{display:block;width:80px;height:30px;font-size:16px;line-height:30px;text-decoration:none;text-align:center;font-weight:bold;}.red a{border-bottom:2px solid #FF0000;color:#FF0000;}.orange a{border-bottom:2px solid #FF7F00;color:#FF7F00;}.yellow a{border-bottom:2px solid #FFD306;color:#FFD306;}.green a{border-bottom:2px solid #00FF00;color:#00FF00;}.verdant a{border-bottom:2px solid #00FFFF;color:#00FFFF;}.blue a{border-bottom:2px solid #0000FF;color:#0000FF;}.purple a{border-bottom:2px solid #8B00FF;color:#8B00FF;}#logo{
+	background: url("https://www.he.net/3d-map/images/3d-map-thumbnail-170px.gif") no-repeat no-repeat left center;
+	width: 170px;
+	height: 170px;
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+}#logo a{
+	width: 118px;
+	height: 118px;
+	display: block;
+}#bottom{margin-top:50px;text-align:center;font-size:12px;color:#999;}#copyright{line-height:30px;height:30px;margin-top:40px;}#seo{text-align:center;}#description{margin-top:20px;text-align:center;font-size:26px;color:#666;}.list ul li a span{position:absolute;top:0px;width:70px;line-height:20px;text-align: center;display:block;}.list ul li a span.out{top:0px;padding:5px;}.list ul li a span.over,.list ul li a span.bg{top:-45px;padding:5px;}#list ul li a span.over{color:#FFF;}#list ul li.red span.bg{height:30px;background-color:#FF0000;}#list ul li.orange span.bg{height:30px;background-color:#FF7F00;}#list ul li.yellow span.bg{height:30px;background-color:#FFD306;}#list ul li.green span.bg{height:30px;background-color:#00FF00;}#list ul li.verdant span.bg{height:30px;background-color:#00FFFF;}#list ul li.blue span.bg{height:30px;background-color:#0000FF;}#list ul li.purple span.bg{height:30px;background-color:#8B00FF;}#wrapper #bottom #seo {
+	font-family: "微软雅黑";
+}
+#wrapper #main #description p {
+	font-size: larger;
+}
+#wrapper #bottom #seo p strong {
+	font-size: 14px;
+}
+#wrapper #top h2 {
+	color: #333;
+	font-family: "微软雅黑";
+}
+</style>
+<script language="javascript">
+		$(document).ready(function() {
+			/// wrap inner content of each anchor with first layer and append background layer
+			$("#list li a").wrapInner( '<span class="out"></span>' ).append( '<span class="bg"></span>' );
+			// loop each anchor and add copy of text content
+			$("#list li a").each(function() {
+				$( '<span class="over">' +  $(this).text() + '</span>' ).appendTo( this );
+			});
+			$("#list li a").hover(function() {
+				// this function is fired when the mouse is moved over
+				$(".out",	this).stop().animate({'top':	'45px'},	500); // move down - hide
+				$(".over",	this).stop().animate({'top':	'0px'},		500); // move down - show
+				$(".bg",	this).stop().animate({'top':	'0px'},		240); // move down - show
+			}, function() {
+				// this function is fired when the mouse is moved off
+				$(".out",	this).stop().animate({'top':	'0px'},		500); // move up - show
+				$(".over",	this).stop().animate({'top':	'-45px'},	500); // move up - hide
+				$(".bg",	this).stop().animate({'top':	'-45px'},	240); // move up - hide
+			});
+		});
+	</script>
+</head>
+<body dir=ltr text=#008000 vLink=#00C000 aLink=#00FF00 link=#00C000 bgColor=#000000 background="suhu.gif">
+
+<noscript><body></noscript>
+<div id="wrapper">
+<div id="top">
+  <h2>政者，正也，子帅以正，孰敢不正？</h2>
+</div> <!--文字点-->
+<div id="main">
+<div id="logo">
+  <div align="center"><a href="http://hao.suhu.me/" target="_blank"> </a></div>
+</div>
+<div id="list" class="list">
+<ul>
+<li class="red"><a href="https://www.suhu.me" target="_blank">进入主站</a></li>
+<li class="orange"><a href="https://www.suhu.me" target="_blank">速狐博客</a></li>
+<li class="yellow"><a href="http://t.qq.com/a1339652706" target="_blank">速狐微博</a></li>
+<li class="green"><a href="http://www.he.net/" target="_blank">网络服务</a></li>
+<li class="verdant"><a href="http://192.168.1.1" target="_blank">内部网络</a></li>
+<li class="blue"><a href="/" target="_blank">关于本站</a></li>
+<li class="purple"><a href="https://wpa.qq.com/msgrd?v=3&uin=1339652706&site=qq&menu=yes" target="_blank">联系我们</a></li>
+</ul>
+</div>
+</div>
+<div id="bottom">
+<div id="seo">
+<P align="center"><strong>Red Hat , CentOS , Debian , Ubuntu , Windows Server 2008 R2 , Windows Server 2012 R2</strong></p>
+<P align="center"><strong>DELL , Huawei , Inspur , RAID , iDRAC ，iBMC，IPMI</strong></p>
+<p align="center"><strong>VMware VirtualCenter , ESXi ，VMware , Hyper-V ，KVM</strong></p>
+<P align="center"><strong>Shell ，Python</strong></p>
+</div>
+<audio src="https://suhu-1251900594.cossh.myqcloud.com/love.mp3" controls="" autoplay=""></audio>
+<div id="copyright">Welcome &copy; 2008-2020 SUHU</div>
+</div>
+</div>
+</body>
+</html>
