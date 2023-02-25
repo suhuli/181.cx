@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>流量消耗器 </title>
     <meta name="keywords" content="流量消耗器,流量杀手">
-    <meta name="description" content="流量消耗器，web版流量杀手，https://api.vv1234.cn/llxhq/。">
+    <meta name="description" content="流量消耗器，web版流量杀手，https://181.cx/shua/index.html。">
     <link rel="stylesheet" href="css/dashlite.css">
 	<link rel="stylesheet" href="css/style.css?v=20220626">
-	<link rel="shortcut icon" href="//wx1.vv1234.cn/favicon.ico">
+	<link rel="shortcut icon" href="//www.181.cx/favicon.ico">
 	<link rel="manifest" href="manifest.json">
 	<script type="text/javascript">
 	if (navigator.serviceWorker != null) {
@@ -48,14 +48,14 @@
                         class="icon ni ni-menu"></em></a>
             </div>
             <div class="nk-header-brand">
-                <a href="#" class="logo-link text-base"><img src="https://puep.qpic.cn/coral/Q3auHgzwzM4fgQ41VTF2rKndoDgEvAVV5cqSibegTpcHqYVqLeADsQw/0" class="hide-mb-sm">流量消耗器</a>
+                <a href="#" class="logo-link text-base"><img src="https://www.181.cx/suhu.gif" class="hide-mb-sm">流量消耗器</a>
 			</div>
             <!-- .nk-header-brand -->
             <div class="nk-header-tools nk-header-menu" data-content="headerNav">
                 <div class="nk-header-mobile">
                     <div class="nk-header-brand">
                         <a href="/" class="logo-link text-base">
-                            <span class="nio-version" style="font-size: 21px;position: inherit;">零玖互联</span>
+                            <span class="nio-version" style="font-size: 21px;position: inherit;">速狐呀</span>
                         </a>
                     </div>
                     <div class="nk-menu-trigger mr-n2">
@@ -77,9 +77,9 @@
                         </a>
                     </li>
 					<li class="nk-menu-item ">
-					    <a href="//pan.vv1234.cn" class="nk-menu-link nk-ibx-action-item">
+					    <a href="//blog.181.cx/" class="nk-menu-link nk-ibx-action-item">
 					        <em class="icon ni ni-dropbox"></em>
-					        <span class="nk-menu-text">免费图床</span>
+					        <span class="nk-menu-text">速狐博客</span>
 					    </a>
 					</li>
 					<li class="nk-menu-item ">
@@ -89,7 +89,7 @@
 					    </a>
 					</li>
                     <li class="nk-menu-item ">
-                        <a href="//vv1234.cn" class="nk-menu-link nk-ibx-action-item">
+                        <a href="181.cx/email.html" class="nk-menu-link nk-ibx-action-item">
                             <em class="icon ni ni-comments"></em>
                             <span class="nk-menu-text">留言反馈</span>
                         </a>
