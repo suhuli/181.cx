@@ -3,6 +3,7 @@
 
 <head>
   <title>文件列表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,7 +19,7 @@
       list-style-type: none;
       padding: 0;
       margin: 20px auto;
-      max-width: 600px;
+      max-width: 100%;
       border: 1px solid #ddd;
       background-color: #fff;
     }
@@ -26,6 +27,9 @@
     li {
       padding: 10px;
       border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     a {
@@ -46,9 +50,9 @@
   <script>
     // 假设当前目录下有一些文件，这里列举几个示例
     var files = [
-      { name: 'file1.txt', url: 'file1.txt' },
-      { name: 'file2.jpg', url: 'file2.jpg' },
-      { name: 'file3.mp3', url: 'file3.mp3' }
+      { name: 'Tvbox手机端.apk', url: '/pan/EasyBox_1.3.0.apk' },
+      { name: '百度隧道.lua', url: 'https://181.cx/baidu.lua' },
+      { name: 'Office tool', url: 'https://otp.landian.vip/' }
     ];
 
     files.forEach(function (file) {
@@ -57,6 +61,15 @@
       a.href = file.url; // 文件下载链接
       a.textContent = file.name;
       li.appendChild(a);
+
+      var downloadBtn = document.createElement('button');
+      downloadBtn.textContent = '下载';
+      downloadBtn.addEventListener('click', function () {
+        // 下载文件的逻辑
+        window.open(file.url, '_blank');
+      });
+
+      li.appendChild(downloadBtn);
       document.getElementById('fileList').appendChild(li);
     });
   </script>
