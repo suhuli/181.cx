@@ -11,13 +11,13 @@
   <ul id="fileList"></ul>
 
   <script>
-    // 获取文件列表的函数
+    // 获取当前目录下文件列表的函数
     function getFileList() {
       var fileList = document.getElementById('fileList');
 
       // 使用 XMLHttpRequest 对象获取文件信息
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', '/123666', true);
+      xhr.open('GET', window.location.href, true);
 
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -27,7 +27,7 @@
           files.forEach(function (file) {
             var li = document.createElement('li');
             var a = document.createElement('a');
-            a.href = '/123666/' + file;
+            a.href = window.location.href + file;
             a.textContent = file;
             li.appendChild(a);
             fileList.appendChild(li);
