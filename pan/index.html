@@ -3,43 +3,62 @@
 
 <head>
   <title>文件列表</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    ul#fileList {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px auto;
+      max-width: 600px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
-  <h2>文件列表</h2>
-
+  <h2>当前目录文件列表</h2>
   <ul id="fileList"></ul>
 
   <script>
-    // 获取当前目录下文件列表的函数
-    function getFileList() {
-      var fileList = document.getElementById('fileList');
+    // 假设当前目录下有一些文件，这里列举几个示例
+    var files = [
+      { name: 'file1.txt', url: 'file1.txt' },
+      { name: 'file2.jpg', url: 'file2.jpg' },
+      { name: 'file3.mp3', url: 'file3.mp3' }
+    ];
 
-      // 使用 XMLHttpRequest 对象获取文件信息
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', window.location.href, true);
-
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          var files = JSON.parse(xhr.responseText);
-
-          // 遍历文件列表并创建下载链接
-          files.forEach(function (file) {
-            var li = document.createElement('li');
-            var a = document.createElement('a');
-            a.href = window.location.href + file;
-            a.textContent = file;
-            li.appendChild(a);
-            fileList.appendChild(li);
-          });
-        }
-      };
-
-      xhr.send();
-    }
-
-    // 调用获取文件列表函数
-    getFileList();
+    files.forEach(function (file) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = file.url; // 文件下载链接
+      a.textContent = file.name;
+      li.appendChild(a);
+      document.getElementById('fileList').appendChild(li);
+    });
   </script>
 </body>
 
