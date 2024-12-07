@@ -2,103 +2,117 @@
 <html>
 
 <head>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #1ebb3e;
-      flex-direction: column;
-    }
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1ebb3e;
+            flex-direction: column;
+        }
 
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      border: 8px solid #4CAF50;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-    }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            border: 8px solid #4CAF50;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
 
-    img:hover {
-      transform: scale(1.5);
-    }
+        img:hover {
+            transform: scale(1.5);
+        }
 
-    /* 按钮样式 */
-    button {
-      padding: 15px 30px;
-      background-color: #4CAF50;
-      color: white;
-      font-size: 25px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-bottom: 20px;
-    }
+        /* 按钮样式 */
+        button {
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
 
-    button:hover {
-      background-color: #45a049;
-    }
+        button:hover {
+            background-color: #45a049;
+        }
 
-    /* 弹窗样式 */
-  .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
+        /* 弹窗样式 */
+     .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
 
-  .modal-content {
-      background-color: #fefefe;
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 30%;
-      position: relative;
-    }
+     .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+            position: relative;
+        }
 
-  .close {
-      position: absolute;
-      top: -10px;
-      right: 10px;
-      font-size: 50px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
+     .close {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
 
-  <button onclick="openModal()">信息</button>
-  <img src="ka.png" alt="QR Code">
+    <button onclick="openModal()">信息</button>
+    <img src="ka.png" alt="QR Code" onclick="goToTaobao()">
 
-  <!-- 弹窗 -->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <p>卡号 1410463013617</p>
-      <p>IMEI 865025071689724</p>
-      <p>ICCID 8986112322604487358</p>
+    <!-- 弹窗 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>卡号 1410463013617</p>
+            <p>IMEI 865025071689724</p>
+            <p>ICCID 8986112322604487358</p>
+        </div>
     </div>
-  </div>
 
-  <script>
-    function openModal() {
-      document.getElementById("myModal").style.display = "block";
-    }
+    <script>
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
 
-    function closeModal() {
-      document.getElementById("myModal").style.display = "none";
-    }
-  </script>
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+        
+        function goToTaobao() {
+            // 判断是否为移动端
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                const taobaoUrl = "https://market.m.taobao.com/app/Link-IotCard/iotx-linkcard-2c-taobao-app/index.html";
+                // 尝试唤起淘宝应用打开链接，如果失败（比如未安装淘宝）则在浏览器打开
+                window.location.href = `taobao://${taobaoUrl}`;
+                setTimeout(() => {
+                    window.location.href = taobaoUrl;
+                }, 1000);
+            }
+            // 如果是非移动端（比如电脑端），这里可以根据需求添加其他逻辑，或者什么都不做保持原样
+        }
+    </script>
 
 </body>
 
