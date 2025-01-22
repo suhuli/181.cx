@@ -1,150 +1,89 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>文件列表</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: "Segoe UI", "Roboto", sans-serif; /* 更现代的字体 */
-            background-color: #f4f4f4;
-            margin: 0; /* 移除默认 margin */
-            display: flex; /* 使用 Flexbox 布局 */
-            flex-direction: column; /* 垂直方向布局 */
-            min-height: 100vh; /* 确保 body 至少占满整个视口高度 */
-        }
+  <title>文件列表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
 
-        h2 {
-            text-align: center;
-            color: #333;
-            margin: 20px 0;
-        }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
 
-        #fileList {
-            list-style-type: none;
-            padding: 0;
-            margin: 0 auto; /* 居中 */
-            max-width: 800px;
-            width: 90%; /* 在小屏幕上占据更多宽度 */
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 阴影 */
-            border-radius: 8px; /* 圆角 */
-            overflow: hidden; /* 隐藏超出容器的阴影 */
-            flex-grow: 1; /* 允许列表填充剩余空间 */
-        }
+    ul#fileList {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px auto;
+      max-width: 100%;
+      border: 1px solid #ddd;
+      background-color: #fff;
+    }
 
-        li {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-            transition: background-color 0.2s; /* 过渡动画 */
-        }
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        li:hover {
-            background-color: #f9f9f9;
-        }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
 
-        li:last-child {
-            border-bottom: none; /* 移除最后一个列表项的底部边框 */
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-            flex-grow: 1; /* 允许链接占据剩余空间 */
-            display: flex;
-            align-items: center;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .file-icon {
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
-        }
-
-        button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-        footer{
-            text-align: center;
-            padding: 10px;
-        }
-        @media (max-width: 600px) {
-            li {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            a{
-                margin-bottom: 5px;
-            }
-        }
-    </style>
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
+
 <body>
-    <h2>当前目录文件列表</h2>
-    <ul id="fileList"></ul>
-    <footer>@2024</footer>
-    <script>
-        var files = [
-            // ... (文件数据)
-        ];
+  <h2>当前目录文件列表</h2>
+  <ul id="fileList"></ul>
 
-        files.forEach(file => {
-            const li = document.createElement('li');
-            const fileIcon = document.createElement('img');
-            fileIcon.className = 'file-icon';
+  <script>
+    // 假设当前目录下有一些文件，这里列举几个示例
+    var files = [
+      { name: 'Tvbox手机端.apk', url: '/pan/pan/EasyBox_1.3.0.apk' },
+      { name: '百度隧道.lua', url: 'https://cdn.jsdelivr.net/gh/suhuli/181.cx/baidu.lua' },
+	  { name: '谷歌浏览器', url: 'https://www.google.cn/chrome/' },
+      { name: 'Office tool', url: 'https://otp.landian.vip/' },
+	  { name: 'SSH工具', url: 'http://www.hostbuf.com/' },
+	  { name: 'Win激活工具', url: 'https://github.com/zbezj/HEU_KMS_Activator/releases' },
+	  { name: 'Geek', url: '/pan/pan/geek.exe' },
+	  { name: '向日葵', url: '/pan/pan/xrk.exe' },
+	  { name: 'Todesk', url: '/pan/pan/td.exe' },
+	  { name: 'v222安卓', url: '/pan/pan/v222.apk' },
+	  { name: '中芯APP', url: '/pan/pan/zxic.zip' },
+	  { name: '远控CF-CMCC', url: 'https://cdn.jsdelivr.net/gh/suhuli/181.cx/pan/pan/goodlink.zip' },
+	  { name: '360压缩国际版', url: '/pan/pan/360zip.exe' },
+	  { name: '测试', url: '测试' }
+    ];
 
-            const fileExtension = file.name.split('.').pop().toLowerCase();
-            switch(fileExtension){
-                case 'apk':
-                    fileIcon.src = 'https://img.icons8.com/color/32/apk.png';
-                    break;
-                case 'lua':
-                    fileIcon.src = 'https://img.icons8.com/color/32/lua.png';
-                    break;
-                case 'exe':
-                    fileIcon.src = 'https://img.icons8.com/color/32/exe.png';
-                    break;
-                case 'zip':
-                    fileIcon.src = 'https://img.icons8.com/color/32/zip.png';
-                    break;
-                default:
-                    fileIcon.src = 'https://img.icons8.com/color/32/file--v1.png';
-                    break;
-            }
-            const a = document.createElement('a');
-            a.href = file.url || '#';
-            a.textContent = file.name;
-            a.download = file.url?.startsWith('/') ? file.name : '';
-            a.prepend(fileIcon)
-            li.appendChild(a);
+    files.forEach(function (file) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = file.url; // 文件下载链接
+      a.textContent = file.name;
+      li.appendChild(a);
 
-            if(file.url){
-                const downloadBtn = document.createElement('button');
-                downloadBtn.textContent = '下载';
-                downloadBtn.addEventListener('click', () => {
-                    window.open(file.url, '_blank');
-                });
-                li.appendChild(downloadBtn);
-            }
+      var downloadBtn = document.createElement('button');
+      downloadBtn.textContent = '下载';
+      downloadBtn.addEventListener('click', function () {
+        // 下载文件的逻辑
+        window.open(file.url, '_blank');
+      });
 
-            document.getElementById('fileList').appendChild(li);
-        });
-    </script>
+      li.appendChild(downloadBtn);
+      document.getElementById('fileList').appendChild(li);
+    });
+  </script>
 </body>
+
 </html>
