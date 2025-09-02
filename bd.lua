@@ -57,7 +57,7 @@ function wa_lua_on_handshake_cb(ctx)
         local host = ctx_address_host(ctx)
         local port = ctx_address_port(ctx)
         -- 构造请求头
-        local res = 'CONNECT ' .. host .. ':' .. port .. 'HTTP/1.1\r\n' ..
+        local res = 'CONNECT ' .. host .. ':' .. port .. ' HTTP/1.1\r\n' ..
                     'Host: 183.240.98.84:443\r\n' ..
                     'Proxy-Connection: Keep-Alive\r\n'..
                     'X-T5-Auth: 683556433\r\n\r\n'
@@ -101,12 +101,4 @@ function wa_lua_on_close_cb(ctx)
     ctx_free(ctx)
     -- 返回成功结果
     return SUCCESS
-end
-
--- 新添加的函数，用于设置 DNS 服务器
-function wa_lua_set_dns_server(server)
-    -- 在这里实现设置指定的 DNS 服务器的功能
-    -- 例如：
-    -- local dns_server = "119.29.29.29"
-    -- http.set_dns_server(dns_server)
 end
